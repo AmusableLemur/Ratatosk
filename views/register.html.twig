@@ -1,0 +1,19 @@
+{% set hide_footer = true %}
+{% set back_button = true %}
+{% extends "base.html.twig" %}
+
+{% block content %}
+    <div class="content-padded">
+        <br>
+
+        {% if error is defined and error|length > 0 %}
+            <p class="text-danger"><strong>Registration failed:</strong> {{ error }}</p>
+        {% endif %}
+
+        <form action="{{ path("register") }}" method="post" class="login-form">
+            <input type="text" name="username" value="" placeholder="Username">
+            <input type="password" name="password" value="" placeholder="Password">
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+        </form>
+    </div>
+{% endblock %}

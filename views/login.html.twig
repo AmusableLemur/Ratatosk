@@ -1,0 +1,25 @@
+{% set hide_footer = true %}
+{% extends "base.html.twig" %}
+
+{% block content %}
+    <div class="content-padded">
+        <p>
+            This is <strong>Ratatosk</strong>, a small and simple messaging service. The name comes from the squirrel of the <a href="https://en.wikipedia.org/wiki/Ratatoskr" data-ignore="push">same name</a> in Norse mythology. Login below to try it out.
+        </p>
+        <br>
+
+        {% if error|length > 0 %}
+            <p class="text-danger"><strong>Log in failed:</strong> {{ error }}</p>
+        {% endif %}
+
+        <form action="{{ path("user_login_check") }}" method="post" class="login-form">
+            <input type="text" name="_username" value="{{ last_username }}" placeholder="Username">
+            <input type="password" name="_password" value="" placeholder="Password">
+            <button type="submit" class="btn btn-primary btn-block">Log in</button>
+        </form>
+
+        <p class="text-center">
+            <a href="{{ path("register") }}">Create a username</a>
+        </p>
+    </div>
+{% endblock %}

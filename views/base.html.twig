@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>{% if title is defined %}{{ title }} &middot; {% endif %}Ratatosk</title>
+    <link href="css/ratchet.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <script src="js/ratchet.js"></script>
+</head>
+
+<body>
+    <header class="bar bar-nav">
+        {% if back_button is defined %}
+            <a class="icon icon-left-nav pull-left" href="{{ path("home") }}"></a>
+        {% endif %}
+
+        {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+            <a class="icon icon-gear pull-right" href="#settings"></a>
+        {% endif %}
+
+        <h1 class="title">
+            {% if title is defined %}
+                {{ title }}
+            {% else %}
+                Ratatosk
+            {% endif %}
+        </h1>
+    </header>
+
+    {% block footer %}{% endblock %}
+
+    <div id="settings" class="modal">
+        <header class="bar bar-nav">
+            <a class="icon icon-close pull-right" href="#settings"></a>
+            <h1 class="title">Settings</h1>
+        </header>
+
+        <div class="content">
+            <div class="card">
+                <ul class="table-view">
+                    <li class="table-view-cell">
+                        <a href="{{ path("user_logout") }}">
+                            Log out
+                        </a>
+                    </li>
+                </u>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        {% block content %}
+            <div class="message left">
+                <div class="card">
+                    <p class="content-padded">
+                        <strong>Friend:</strong>
+                        Hello
+                    </p>
+                </div>
+            </div>
+
+            <div class="message right">
+                <div class="card">
+                    <p class="content-padded">
+                        Hello
+                    </p>
+                </div>
+            </div>
+        {% endblock %}
+    </div>
+</body>
+
+</html>

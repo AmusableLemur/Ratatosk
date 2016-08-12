@@ -1,0 +1,45 @@
+{% set title = app.user.username %}
+{% extends "base.html.twig" %}
+
+{% block content %}
+    <div class="card">
+        <ul class="table-view">
+            {% for conversation in conversations %}
+                <li class="table-view-cell media">
+                    <a class="navigate-right">
+                        <span class="media-object pull-left icon icon-person"></span>
+                        <span class="badge">5</span>
+                        <div class="media-body">
+                            test
+                        </div>
+                    </a>
+                </li>
+            {% else %}
+                <li class="table-view-cell media">
+                    Nothing right now
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    <div class="bar bar-standard bar-footer">
+        <a class="btn btn-primary btn-block" href="#new">New conversation</a>
+    </div>
+
+    <div id="new" class="modal">
+        <header class="bar bar-nav">
+            <a class="icon icon-close pull-right" href="#new"></a>
+            <h1 class="title">New conversation</h1>
+        </header>
+
+        <div class="content">
+            <form class="content-padded">
+                <input type="text" placeholder="User">
+                <textarea rows="5" placeholder="Message"></textarea>
+                <button class="btn btn-primary btn-block">Send message</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
